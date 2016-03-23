@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="Bartjan" id="createTableTest">
+		<createTable tableName="Author">
+			<column autoIncrement="true" name="id" type="int(11)">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="createdAt" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="lastModifiedAt" type="datetime">
+				<constraints nullable="false"/>
+			</column>
+			<column name="firstName" type="varchar(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="lastName" type="varchar(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="workEmail" type="varchar(256)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="personalEmail" type="varchar(256)">
+				<constraints nullable="true"/>
+			</column>
+			<column name="phoneNumber" type="varchar(50)">
+				<constraints nullable="true"/>
+			</column>
+			<column defaultValueBoolean="false" name="verwijderd" type="boolean">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="dropColumnTest" author="Bartjan">
+        <dropColumn columnName="organisatie" tableName="Tool" />
+	</changeSet>
+    
+    <changeSet id="dropTest" author="bzondag">
+        <dropTable tableName="test" />
+    </changeSet>
+    
+    <changeSet id="renameTest" author="bzondag">
+        <renameTable newTableName="DitZijnBetereTools"
+			oldTableName="Tool" />
+    </changeSet>
+    
+    <changeSet id="addColumnTest" author="Bartjan">
+		
+		<addColumn tableName="Tool">
+			<column name="blop" type="int" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+            <column name="blip" type="int" defaultValue="0">
+				<constraints nullable="true" />
+			</column>
+		</addColumn>
+	</changeSet>
+
+</databaseChangeLog>
